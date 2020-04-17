@@ -2,7 +2,6 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -15,9 +14,9 @@
    <top>
       <HBox alignment="TOP_RIGHT" prefHeight="18.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane prefHeight="23.0" prefWidth="521.0">
+            <AnchorPane prefHeight="25.0" prefWidth="400.0">
                <children>
-                  <Label contentDisplay="RIGHT" layoutX="-1.0" layoutY="1.0" prefHeight="21.0" prefWidth="200.0" text="일기쓰기">
+                  <Label contentDisplay="CENTER" layoutX="143.0" layoutY="4.0" text="Label">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -60,11 +59,11 @@
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <DatePicker fx:id="txtDate">
+            <Label fx:id="txtDate" prefHeight="15.0" prefWidth="142.0">
                <VBox.margin>
                   <Insets bottom="13.0" />
                </VBox.margin>
-            </DatePicker>
+            </Label>
             <TextField fx:id="txtWeather">
                <VBox.margin>
                   <Insets bottom="13.0" />
@@ -75,19 +74,19 @@
                   <Insets bottom="13.0" />
                </VBox.margin>
             </TextField>
-            <TextField fx:id="txtContents" alignment="TOP_LEFT" prefHeight="200.0" prefWidth="482.0">
+            <TextField fx:id="txtContents" prefHeight="200.0" prefWidth="482.0">
                <VBox.margin>
                   <Insets bottom="13.0" />
                </VBox.margin>
             </TextField>
             <HBox prefHeight="41.0" prefWidth="588.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#dyInsert" text="저장하기">
+                  <Button mnemonicParsing="false" onAction="#empInsert" text="저장하기">
                      <HBox.margin>
                         <Insets bottom="9.0" left="9.0" right="9.0" top="9.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" onAction="#dyDelete" text="취소하기">
+                  <Button mnemonicParsing="false" text="취소하기">
                      <HBox.margin>
                         <Insets bottom="9.0" left="9.0" right="9.0" top="9.0" />
                      </HBox.margin>

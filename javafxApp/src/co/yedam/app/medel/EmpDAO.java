@@ -29,7 +29,7 @@ public class EmpDAO {
 			pstmt.setString(4, emp.getHireDate());
 			pstmt.setString(5, emp.getJobId());
 			
-			pstmt.executeUpdate(); //dml
+			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
