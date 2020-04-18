@@ -1,18 +1,22 @@
 package co.yedam.diary.model;
 
-import java.time.LocalDate;
-
 public class DiaryDO {
+	private int idx;
 	private String dDate;
 	private String weather;
 	private String title;
 	private String contents;
-	
+	public int getIdx() {
+		return idx;
+	}
+	public void setIdx(int idx) {
+		this.idx = idx;
+	}
 	public String getdDate() {
 		return dDate;
 	}
-	public void setdDate(String localDate) {
-		this.dDate = localDate;
+	public void setdDate(String dDate) {
+		this.dDate = dDate;
 	}
 	public String getWeather() {
 		return weather;
@@ -32,10 +36,12 @@ public class DiaryDO {
 	public void setContents(String contents) {
 		this.contents = contents;
 	}
+	
 	@Override
 	public String toString() {
-		return "DiaryDO [dDate=" + dDate + ", weather=" + weather + ", title=" + title + ", contents=" + contents + "]";
+		return "NO." + idx + "   DATE. " + dDate + "   TITLE. " + title;
 	}
+	
 	
 	
 	
