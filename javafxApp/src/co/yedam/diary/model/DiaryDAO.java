@@ -70,7 +70,7 @@ public class DiaryDAO {
 			ResultSet rs = pstmt.executeQuery(); //데이터를 가져와서 ResultSet에 담는다.
 			while(rs.next()) {
 				DiaryDO dy = new DiaryDO();
-				dy.setIdx(rs.getInt("idx"));
+				dy.setIdx(rs.getString("idx"));
 				dy.setdDate(rs.getString("d_date"));
 				dy.setTitle(rs.getString("title"));
 				
@@ -95,11 +95,12 @@ public class DiaryDAO {
 				String sql = "select * from diary where idx = ?";
 				PreparedStatement pstmt = conn.prepareStatement(sql);
 				//3. execute
-				pstmt.setInt(1, diaryDO.getIdx());
+				pstmt.setString(1, diaryDO.getIdx());
 				ResultSet rs = pstmt.executeQuery();
 				
 				//4. 조회결과
 				if(rs.next()) {
+					diaryDO.setIdx(rs.getString("idx"));
 					diaryDO.setdDate(rs.getString("d_date"));
 					diaryDO.setWeather(rs.getString("weather"));
 					diaryDO.setTitle(rs.getString("title"));

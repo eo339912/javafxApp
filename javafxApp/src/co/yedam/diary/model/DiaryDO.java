@@ -1,15 +1,15 @@
 package co.yedam.diary.model;
 
 public class DiaryDO {
-	private int idx;
+	private String idx;
 	private String dDate;
 	private String weather;
 	private String title;
 	private String contents;
-	public int getIdx() {
+	public String getIdx() {
 		return idx;
 	}
-	public void setIdx(int idx) {
+	public void setIdx(String idx) {
 		this.idx = idx;
 	}
 	public String getdDate() {
@@ -36,7 +36,6 @@ public class DiaryDO {
 	public void setContents(String contents) {
 		this.contents = contents;
 	}
-	
 	@Override
 	public String toString() {
 		return "NO." + idx + "   DATE. " + dDate + "   TITLE. " + title;

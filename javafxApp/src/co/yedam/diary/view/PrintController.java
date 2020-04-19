@@ -12,10 +12,9 @@ import javafx.scene.control.TextField;
 
 public class PrintController implements Initializable{
 
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-		
-	}
+	@FXML
+	TextField txtIdx;
+	
 	@FXML
 	TextField txtDate;
 	
@@ -28,18 +27,40 @@ public class PrintController implements Initializable{
 	@FXML
 	TextField txtWeather;
 	
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+//		DiaryDO dy = new DiaryDO();
+//		for(String item: DataModel.num) {
+//			dy.setIdx(item);
+//        }
+//		
+//		DiaryDAO dao = new DiaryDAO();
+//		DiaryDO result = dao.select(dy);
+//		
+//		txtDate.setText(result.getdDate());
+//		txtTitle.setText(result.getTitle());
+//		txtWeather.setText(result.getWeather());
+//		txtContents.setText(result.getContents());
+		
+	}
+	
 	@FXML //수정버튼 click
 	public void dyChange(ActionEvent actionEvent) {
 		DiaryDO dy = new DiaryDO();
-		//dy.setIdx(txtIdx.getInt());
+//		for(String item: DataModel.num) {
+//			dy.setIdx(item);
+//        }
+		dy.setIdx(txtIdx.getText());
 		
 		DiaryDAO dao = new DiaryDAO();
 		DiaryDO result = dao.select(dy);
 		
+		txtIdx.setText(result.getIdx());
 		txtDate.setText(result.getdDate());
 		txtTitle.setText(result.getTitle());
 		txtWeather.setText(result.getWeather());
 		txtContents.setText(result.getContents());
+		
 		System.out.println("수정처리됨");
 		
 

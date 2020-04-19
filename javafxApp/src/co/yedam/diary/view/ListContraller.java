@@ -12,8 +12,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
 public class ListContraller implements Initializable{
 	
@@ -34,28 +36,31 @@ public class ListContraller implements Initializable{
 		}
 		
 		listView.setOnMouseClicked((MouseEvent)->{
-           Object obj = listView.getSelectionModel().getSelectedItem();
-           listView.getItems();
-            
-            try {
-                Parent sub = FXMLLoader.load(getClass().getResource("../view/diaryPrint.fxml")); // 서브페이지 불러오고
-                // 메인창 지정 -> 씬 불러오기 -> 레이아웃 불러오기
-                //BorderPane root = (BorderPane) rootLayout.getScene().getRoot();
-                //Stage primaryStage = (Stage) menubar.getScene().getWindow();
-                // 서브페이지 추가 (메인 레이아웃을 서브 레이아웃이 덮어쓴다.)
-                //root.getChildren().add(sub);
-                
-    			rootLayout.setCenter(sub);
-    			
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
+	        try {
+	        	checkValue();
+	    		// 새로운 창 띄우기 (새 스테이지 생성 -> 씬 추가 -> 레이아웃 추가)
+	        	Stage stage = new Stage();
+	        	Parent root = FXMLLoader.load(getClass().getResource("../view/diaryPrint.fxml"));
+	        	Scene sc = new Scene(root);
+	        	stage.setScene(sc);
+	        	stage.show();
+	        	// 메인 창 닫아주기
+	        	Stage main = (Stage) listView.getScene().getWindow();
+	        	main.close();
+	    			
+	        } catch (IOException e) {
+	        	e.printStackTrace();
+	        }
+        });//setOnMouseClicked
 		
 	}
 	
-	
+	private void checkValue() {
+        String obj = listView.getSelectionModel().getSelectedItem().getIdx();
+		System.out.println(obj);
+		DataModel.num.add(obj);
+		
+	}
 
-	
 	
 }
