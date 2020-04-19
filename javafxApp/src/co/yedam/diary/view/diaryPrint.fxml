@@ -61,7 +61,6 @@
                </GridPane.margin>
             </Label>
             <TextField fx:id="txtContents" prefHeight="147.0" prefWidth="494.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <TextField fx:id="txtIdx" />
          </children>
          <BorderPane.margin>
             <Insets bottom="9.0" left="9.0" right="9.0" top="9.0" />
@@ -73,7 +72,7 @@
          <children>
             <HBox alignment="BASELINE_CENTER" prefHeight="73.0" prefWidth="302.0">
                <children>
-                  <Button fx:id="btn" alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#dyChange" text="Edit" textFill="#120101">
+                  <Button alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#dyChange" text="Edit" textFill="#120101">
                      <font>
                         <Font name="Hobo BT" size="15.0" />
                      </font>

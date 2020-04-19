@@ -95,7 +95,7 @@ public class DiaryDAO {
 				String sql = "select * from diary where idx = ?";
 				PreparedStatement pstmt = conn.prepareStatement(sql);
 				//3. execute
-				pstmt.setString(1, diaryDO.getIdx());
+				pstmt.setString(1, dy.getIdx());
 				ResultSet rs = pstmt.executeQuery();
 				
 				//4. 조회결과
@@ -117,7 +117,36 @@ public class DiaryDAO {
 					e.printStackTrace();
 				}
 			}
-			return diaryDO;
+			return dy;
+			
+		}
+		
+		//삭제
+		public DiaryDO delete(DiaryDO dy) {		
+			
+			try {
+				//1. DB connect (DB연결)
+				conn = DriverManager.getConnection(url , "hr", "hr");
+				
+				//2. statement (SQL 구문준비)
+				String sql = "delete from diary where idx = ?";
+				PreparedStatement pstmt = conn.prepareStatement(sql);
+				//3. execute
+				pstmt.setString(1, dy.getIdx());
+				pstmt.executeUpdate();
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				//4. 조회결과 (등록이라 필요없음)
+				//5. close(연결해제)
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			return dy;
 			
 		}
 }

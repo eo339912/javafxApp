@@ -29,45 +29,40 @@ public class PrintController implements Initializable{
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-//		DiaryDO dy = new DiaryDO();
-//		for(String item: DataModel.num) {
-//			dy.setIdx(item);
-//        }
-//		
-//		DiaryDAO dao = new DiaryDAO();
-//		DiaryDO result = dao.select(dy);
-//		
-//		txtDate.setText(result.getdDate());
-//		txtTitle.setText(result.getTitle());
-//		txtWeather.setText(result.getWeather());
-//		txtContents.setText(result.getContents());
-		
-	}
-	
-	@FXML //수정버튼 click
-	public void dyChange(ActionEvent actionEvent) {
 		DiaryDO dy = new DiaryDO();
-//		for(String item: DataModel.num) {
-//			dy.setIdx(item);
-//        }
-		dy.setIdx(txtIdx.getText());
+		for(String item: DataModel.num) {
+			dy.setIdx(item);
+//			txtIdx.setText(item);
+        }
 		
 		DiaryDAO dao = new DiaryDAO();
 		DiaryDO result = dao.select(dy);
 		
-		txtIdx.setText(result.getIdx());
+//		txtIdx.setText(result.getIdx());
 		txtDate.setText(result.getdDate());
 		txtTitle.setText(result.getTitle());
 		txtWeather.setText(result.getWeather());
 		txtContents.setText(result.getContents());
 		
-		System.out.println("수정처리됨");
+	}
+	
+	@FXML //수정버튼 click
+	public void dyChange(ActionEvent actionEvent) {
 		
-
+		System.out.println("수정처리됨");
 	}
 	
 	@FXML //삭제버튼 click
 	public void dyDelete(ActionEvent actionEvent) {
+		
+		//죄회할 사번을 DO객체에 담기
+		DiaryDO dy = new DiaryDO();
+		dy.setdDate(txtDate.getText());
+				
+		//단건조회
+		DiaryDAO dao = new DiaryDAO();
+		DiaryDO result = dao.delete(dy);;
+				
 		System.out.println("삭제처리됨");
 	}
 	

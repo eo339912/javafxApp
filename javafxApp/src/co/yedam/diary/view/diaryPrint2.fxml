@@ -59,29 +59,30 @@
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField>
+            <TextField fx:id="txtIdx" />
+            <TextField fx:id="txtDate">
                <VBox.margin>
                   <Insets bottom="13.0" />
                </VBox.margin>
             </TextField>
-            <TextField>
+            <TextField fx:id="txtWeather">
                <VBox.margin>
                   <Insets bottom="13.0" />
                </VBox.margin>
             </TextField>
-            <TextField>
+            <TextField fx:id="txtTitle">
                <VBox.margin>
                   <Insets bottom="13.0" />
                </VBox.margin>
             </TextField>
-            <TextField alignment="TOP_LEFT" prefHeight="200.0" prefWidth="482.0">
+            <TextField fx:id="txtContents" alignment="TOP_LEFT" prefHeight="200.0" prefWidth="482.0">
                <VBox.margin>
                   <Insets bottom="13.0" />
                </VBox.margin>
             </TextField>
             <HBox prefHeight="41.0" prefWidth="588.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#dyInsert" text="저장하기">
+                  <Button mnemonicParsing="false" onAction="#dyChange" text="저장하기">
                      <HBox.margin>
                         <Insets bottom="9.0" left="9.0" right="9.0" top="9.0" />
                      </HBox.margin>
