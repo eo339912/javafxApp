@@ -48,7 +48,21 @@ public class PrintController implements Initializable{
 	
 	@FXML //수정버튼 click
 	public void dyChange(ActionEvent actionEvent) {
+		//DAO
+		//텍스트 필드값을 읽어서 DO 객체 담기
+		DiaryDO dy = new DiaryDO();
 		
+		for(String item: DataModel.num) {
+			dy.setIdx(item);
+        }
+		
+		dy.setTitle(txtTitle.getText());
+		dy.setContents(txtContents.getText());
+		dy.setWeather(txtWeather.getText());
+				
+		//DAO 등록
+		DiaryDAO dao = new DiaryDAO();
+		dao.update(dy);
 		System.out.println("수정처리됨");
 	}
 	
@@ -57,11 +71,13 @@ public class PrintController implements Initializable{
 		
 		//죄회할 사번을 DO객체에 담기
 		DiaryDO dy = new DiaryDO();
-		dy.setdDate(txtDate.getText());
-				
+//		dy.setTitle(txtTitle.getText());
+		for(String item: DataModel.num) {
+			dy.setIdx(item);
+        }	
 		//단건조회
 		DiaryDAO dao = new DiaryDAO();
-		DiaryDO result = dao.delete(dy);;
+		dao.delete(dy);
 				
 		System.out.println("삭제처리됨");
 	}

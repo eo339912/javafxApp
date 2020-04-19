@@ -117,13 +117,48 @@ public class DiaryDAO {
 					e.printStackTrace();
 				}
 			}
-			return dy;
+			return diaryDO;
+			
+		}
+		
+		//수정
+		public DiaryDO update(DiaryDO dy) {		
+			DiaryDO diaryDO = new DiaryDO();
+			try {
+				//1. DB connect (DB연결)
+				conn = DriverManager.getConnection(url , "hr", "hr");
+				
+				//2. statement (SQL 구문준비)
+				String sql = "update diary set title = ?, weather = ?, contents = ? where idx = ?";
+				
+				
+				PreparedStatement pstmt = conn.prepareStatement(sql);
+				//3. execute
+				pstmt.setString(1, dy.getTitle());
+				pstmt.setString(2, dy.getWeather());
+				pstmt.setString(3, dy.getContents());
+				pstmt.setString(4, dy.getIdx());
+				
+				pstmt.executeUpdate();
+				//4. 조회결과
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				//5. close(연결해제)
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			return diaryDO;
 			
 		}
 		
 		//삭제
 		public DiaryDO delete(DiaryDO dy) {		
-			
+			DiaryDO diaryDO = new DiaryDO();
 			try {
 				//1. DB connect (DB연결)
 				conn = DriverManager.getConnection(url , "hr", "hr");
@@ -146,7 +181,7 @@ public class DiaryDAO {
 					e.printStackTrace();
 				}
 			}
-			return dy;
+			return diaryDO;
 			
 		}
 }
