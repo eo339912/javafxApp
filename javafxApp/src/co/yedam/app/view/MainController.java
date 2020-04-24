@@ -45,7 +45,15 @@ public class MainController implements Initializable{
 	public void deptView(ActionEvent event) {
 		try {
 			BorderPane deptView = FXMLLoader.load(getClass().getResource("dept.fxml"));
-			rootLayout.setCenter(deptView);
+//			rootLayout.setCenter(deptView);
+			// create scene containing the content
+			Scene scene = new Scene(deptView);
+
+			Stage window = new Stage();
+			window.setScene(scene);
+
+			// make window visible
+			window.show();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}		

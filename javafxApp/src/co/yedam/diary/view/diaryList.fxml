@@ -12,7 +12,7 @@
 
 <BorderPane fx:id="rootLayout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.yedam.diary.view.ListContraller">
    <top>
-      <HBox alignment="TOP_RIGHT" prefHeight="18.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <HBox fx:id="hbox" alignment="TOP_RIGHT" prefHeight="18.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
             <AnchorPane prefHeight="23.0" prefWidth="521.0">
                <children>
@@ -23,7 +23,11 @@
                   </Label>
                </children>
             </AnchorPane>
-            <Button mnemonicParsing="false" text="List" />
+            <Button fx:id="button" alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#diaryInputView" prefHeight="29.0" prefWidth="99.0" text="작성하기" textFill="#0b0101">
+               <font>
+                  <Font name="Hobo BT" size="15.0" />
+               </font>
+            </Button>
          </children>
          <padding>
             <Insets bottom="9.0" left="9.0" right="9.0" top="9.0" />

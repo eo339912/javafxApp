@@ -3,6 +3,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -23,6 +25,16 @@
                </HBox.margin>
             </Button>
             <Button fx:id="btn21" mnemonicParsing="false" onAction="#empSelect" text="조회">
+               <HBox.margin>
+                  <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="btn211" mnemonicParsing="false" onAction="#empSelectAll" text="전체조회">
+               <HBox.margin>
+                  <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="btn2111" mnemonicParsing="false" onAction="#delEmp" text="삭제">
                <HBox.margin>
                   <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
                </HBox.margin>
@@ -88,6 +100,15 @@
             <TextField fx:id="txtEmail" />
             <TextField fx:id="txtHireDate" />
             <TextField fx:id="txtJobId" />
+            <TableView fx:id="tvEmp" onMouseClicked="#empInfo" prefHeight="200.0" prefWidth="200.0">
+              <columns>
+                <TableColumn fx:id="colEmployeeId" prefWidth="99.0" text="employee_id" />
+                <TableColumn fx:id="colLastName" prefWidth="102.0" text="last_name" />
+                  <TableColumn fx:id="colEmail" prefWidth="91.0" text="email" />
+                  <TableColumn fx:id="colHireDate" prefWidth="98.0" text="hire_date" />
+                  <TableColumn fx:id="colJobId" prefWidth="109.0" text="job_id" />
+              </columns>
+            </TableView>
          </children>
       </VBox>
    </center>

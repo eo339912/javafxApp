@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class EmpDAO {
 	
@@ -114,4 +115,40 @@ public class EmpDAO {
 	//삭제
 	
 	//전체조회
+	public ArrayList<EmpDO> selectAll() {
+		ArrayList<EmpDO> list = new ArrayList<EmpDO>();
+		
+		try {
+			//1. DB connect (DB연결)
+			conn = DriverManager.getConnection(url , "hr", "hr");
+			
+			//2. statement (SQL 구문준비)
+			String sql = "select * from employees order by employee_id";
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			//3. execute
+			ResultSet rs = pstmt.executeQuery();
+			
+			//4. 조회결과
+			while(rs.next()) {
+				EmpDO empDO = new EmpDO();
+				empDO.setEmployeeId(rs.getString("employee_id"));
+				empDO.setEmail(rs.getString("email"));
+				empDO.setHireDate(rs.getString("hire_date"));
+				empDO.setJobId(rs.getString("job_id"));
+				empDO.setLastName(rs.getString("last_name"));
+				list.add(empDO);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			//5. close(연결해제)
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return list;
+		
+	}
 }
