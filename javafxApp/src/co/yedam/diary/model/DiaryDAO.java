@@ -59,7 +59,7 @@ public class DiaryDAO {
 	public List<DiaryDO> getDiaryList(){
 		
 		
-		String sql = "select idx, d_date, title from diary order by idx";
+		String sql = "select idx, to_char(d_date, 'yyyy-mm-dd') d_date, title from diary order by idx";
 		List<DiaryDO> list = new ArrayList<>();
 		
 		try {
@@ -92,7 +92,7 @@ public class DiaryDAO {
 				conn = DriverManager.getConnection(url , "hr", "hr");
 				
 				//2. statement (SQL 구문준비)
-				String sql = "select * from diary where idx = ?";
+				String sql = "select idx, to_char(d_date, 'yyyy-mm-dd')  d_date, title, weather, contents from diary where idx = ?";
 				PreparedStatement pstmt = conn.prepareStatement(sql);
 				//3. execute
 				pstmt.setString(1, dy.getIdx());
