@@ -39,10 +39,5 @@ public class DiaryDO {
 	@Override
 	public String toString() {
 		return "NO." + idx + "   DATE. " + dDate + "   TITLE. " + title;
-	}
-	
-	
-	
-	
-	
+	}	
 }

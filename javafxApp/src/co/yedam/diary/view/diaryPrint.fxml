@@ -34,7 +34,6 @@
                   <Insets bottom="9.0" left="9.0" right="9.0" top="9.0" />
                </GridPane.margin>
             </Label>
-            <TextField fx:id="txtDate" GridPane.columnIndex="1" />
             <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="24.0" prefWidth="60.0" text="Weather" GridPane.rowIndex="1">
                <font>
                   <Font name="Hobo BT" size="15.0" />
@@ -62,6 +61,7 @@
                </GridPane.margin>
             </Label>
             <TextArea fx:id="txtContents" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label fx:id="txtDate" prefHeight="15.0" prefWidth="364.0" GridPane.columnIndex="1" />
          </children>
          <BorderPane.margin>
             <Insets bottom="9.0" left="9.0" right="9.0" top="9.0" />

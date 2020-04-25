@@ -84,7 +84,7 @@ public class DiaryDAO {
 		return list;
 	}
 	
-	//단건조회
+	//단건조회 idx
 		public DiaryDO select(DiaryDO dy) {		
 			DiaryDO diaryDO = new DiaryDO();
 			try {
@@ -120,6 +120,43 @@ public class DiaryDAO {
 			return diaryDO;
 			
 		}
+		
+		//단건조회 date
+				public DiaryDO selectDate(DiaryDO dy) {		
+					DiaryDO diaryDO = new DiaryDO();
+					try {
+						//1. DB connect (DB연결)
+						conn = DriverManager.getConnection(url , "hr", "hr");
+						
+						//2. statement (SQL 구문준비)
+						String sql = "select idx, to_char(d_date, 'yyyy-mm-dd')  d_date, title, weather, contents from diary where d_date = ?";
+						PreparedStatement pstmt = conn.prepareStatement(sql);
+						//3. execute
+						pstmt.setString(1, dy.getdDate());
+						ResultSet rs = pstmt.executeQuery();
+						
+						//4. 조회결과
+						if(rs.next()) {
+							diaryDO.setIdx(rs.getString("idx"));
+							diaryDO.setdDate(rs.getString("d_date"));
+							diaryDO.setWeather(rs.getString("weather"));
+							diaryDO.setTitle(rs.getString("title"));
+							diaryDO.setContents(rs.getString("contents"));
+							
+						}
+					} catch (SQLException e) {
+						e.printStackTrace();
+					} finally {
+						//5. close(연결해제)
+						try {
+							conn.close();
+						} catch (SQLException e) {
+							e.printStackTrace();
+						}
+					}
+					return diaryDO;
+					
+				}
 		
 		//수정
 		public DiaryDO update(DiaryDO dy) {		

@@ -14,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
@@ -26,7 +27,7 @@ public class PrintController implements Initializable{
 	TextField txtIdx;
 	
 	@FXML
-	TextField txtDate;
+	Label txtDate;
 	
 	@FXML
 	TextField txtTitle;
@@ -59,6 +60,22 @@ public class PrintController implements Initializable{
 		txtTitle.setText(result.getTitle());
 		txtWeather.setText(result.getWeather());
 		txtContents.setText(result.getContents());
+		
+		//selectDate
+		DiaryDO dy1 = new DiaryDO();
+		for(String item: DataModel.inDate) {
+			dy1.setdDate(item);
+			txtDate.setText(item);
+        }
+		
+		DiaryDAO dao1 = new DiaryDAO();
+		DiaryDO result1 = dao1.selectDate(dy1);
+		
+//		txtIdx.setText(result.getIdx());
+//		txtDate.setText(result1.getdDate());
+		txtTitle.setText(result1.getTitle());
+		txtWeather.setText(result1.getWeather());
+		txtContents.setText(result1.getContents());
 		
 	}
 	
