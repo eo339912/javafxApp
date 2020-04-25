@@ -46,36 +46,43 @@ public class PrintController implements Initializable{
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		DiaryDO dy = new DiaryDO();
-		for(String item: DataModel.num) {
-			dy.setIdx(item);
-//			txtIdx.setText(item);
-        }
 		
-		DiaryDAO dao = new DiaryDAO();
-		DiaryDO result = dao.select(dy);
+		if(DataModel.check.indexOf("num") == 0) {
+			DiaryDO dy = new DiaryDO();
+			for(String item: DataModel.num) {
+				dy.setIdx(item);
+//				txtIdx.setText(item);
+//				System.out.println(item);
+	        }
+			
+			DiaryDAO dao = new DiaryDAO();
+			DiaryDO result = dao.select(dy);
+			
+//			txtIdx.setText(result.getIdx());
+			txtDate.setText(result.getdDate());
+			txtTitle.setText(result.getTitle());
+			txtWeather.setText(result.getWeather());
+			txtContents.setText(result.getContents());
+		}else if(DataModel.check.indexOf("inDate") == 0) {
+			//selectDate
+			DiaryDO dy1 = new DiaryDO();
+			for(String item: DataModel.inDate) {
+				dy1.setdDate(item);
+				txtDate.setText(item);
+	        }
+			
+			DiaryDAO dao1 = new DiaryDAO();
+			DiaryDO result1 = dao1.selectDate(dy1);
+			
+//			txtIdx.setText(result.getIdx());
+//			txtDate.setText(result1.getdDate());
+			txtTitle.setText(result1.getTitle());
+			txtWeather.setText(result1.getWeather());
+			txtContents.setText(result1.getContents());
+		}
+
 		
-//		txtIdx.setText(result.getIdx());
-		txtDate.setText(result.getdDate());
-		txtTitle.setText(result.getTitle());
-		txtWeather.setText(result.getWeather());
-		txtContents.setText(result.getContents());
 		
-		//selectDate
-		DiaryDO dy1 = new DiaryDO();
-		for(String item: DataModel.inDate) {
-			dy1.setdDate(item);
-			txtDate.setText(item);
-        }
-		
-		DiaryDAO dao1 = new DiaryDAO();
-		DiaryDO result1 = dao1.selectDate(dy1);
-		
-//		txtIdx.setText(result.getIdx());
-//		txtDate.setText(result1.getdDate());
-		txtTitle.setText(result1.getTitle());
-		txtWeather.setText(result1.getWeather());
-		txtContents.setText(result1.getContents());
 		
 	}
 	
@@ -168,6 +175,5 @@ public class PrintController implements Initializable{
 		}
 		
 	} // e of goHome
-	
 	
 }

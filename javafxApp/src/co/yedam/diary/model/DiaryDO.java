@@ -6,6 +6,7 @@ public class DiaryDO {
 	private String weather;
 	private String title;
 	private String contents;
+	
 	public String getIdx() {
 		return idx;
 	}
