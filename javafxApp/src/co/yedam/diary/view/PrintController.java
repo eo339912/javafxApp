@@ -74,7 +74,7 @@ public class PrintController implements Initializable{
 			DiaryDAO dao1 = new DiaryDAO();
 			DiaryDO result1 = dao1.selectDate(dy1);
 			
-//			txtIdx.setText(result.getIdx());
+//			txtIdx.setText(result1.getIdx());
 //			txtDate.setText(result1.getdDate());
 			txtTitle.setText(result1.getTitle());
 			txtWeather.setText(result1.getWeather());
@@ -96,21 +96,31 @@ public class PrintController implements Initializable{
 	        alert.setTitle("수정 메시지");
 	        alert.setHeaderText("일기를 수정하려합니다.");
 	        alert.setContentText("정말 수정하시겠습니까?");
-
+	        
 	        Optional<ButtonType>result = alert.showAndWait();
 	        
 	        if(result.get() == ButtonType.OK) {
-	        	for(String item: DataModel.num) {
-	        		dy.setIdx(item);
-	        	}
-	        	
-	        	dy.setTitle(txtTitle.getText());
-	        	dy.setContents(txtContents.getText());
-	        	dy.setWeather(txtWeather.getText());
-	        	
+	        	if(DataModel.check.indexOf("num") == 0) {
+	        		for(String item: DataModel.num) {
+	        			dy.setIdx(item);
+	        		}
+	        		
+	        		dy.setTitle(txtTitle.getText());
+	        		dy.setContents(txtContents.getText());
+	        		dy.setWeather(txtWeather.getText());	        
+	        	}else if(DataModel.check.indexOf("inDate") == 0) {
+	        		
+	        		for(String item: DataModel.inDate) {
+	        			dy.setdDate(item);
+	        		}
+	        		
+	        		dy.setTitle(txtTitle.getText());
+	        		dy.setContents(txtContents.getText());
+	        		dy.setWeather(txtWeather.getText());
+	        	}//end of if
 	        	//DAO 등록
 	        	DiaryDAO dao = new DiaryDAO();
-	        	dao.update(dy);
+	        	dao.updateDate(dy);
 	        	System.out.println("수정처리됨");
 	        	
 	        	//수정하고 리스트로 넘어가기
@@ -133,18 +143,30 @@ public class PrintController implements Initializable{
 	        if(result.get() == ButtonType.OK) {
 	        	//죄회할 사번을 DO객체에 담기
 	        	DiaryDO dy = new DiaryDO();
-//		dy.setTitle(txtTitle.getText());
-	        	for(String item: DataModel.num) {
-	        		dy.setIdx(item);
-	        	}	
-	        	//단건조회
-	        	DiaryDAO dao = new DiaryDAO();
-	        	dao.delete(dy);
+	        	
+	        	if(DataModel.check.indexOf("num") == 0) {
+	        		for(String item: DataModel.num) {
+	        			dy.setIdx(item);
+	        		}	
+	        		//단건조회
+	        		DiaryDAO dao = new DiaryDAO();
+	        		dao.delete(dy);	        		
+	        	}else if(DataModel.check.indexOf("inDate") == 0) {
+	        		for(String item: DataModel.inDate) {
+	        			dy.setdDate(item);
+	        		}	
+	        		//단건조회
+	        		DiaryDAO dao = new DiaryDAO();
+	        		dao.deleteDate(dy);	
+	        		
+	        	}
+	        	
+	        	
 	     
-		System.out.println("삭제처리됨");
-		
-		//삭제하고 리스트로 넘어가기
-    	goHome();
+				System.out.println("삭제처리됨");
+				
+				//삭제하고 리스트로 넘어가기
+		    	goHome();
 	        }
 	}
 	
