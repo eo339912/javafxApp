@@ -19,25 +19,32 @@
             <Insets bottom="9.0" left="9.0" right="9.0" top="9.0" />
          </padding>
          <children>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox prefHeight="30.0" prefWidth="108.0">
                <children>
-                  <Label text="일기장">
+                  <Label text="Daily Note">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="Hobo BT" size="22.0" />
                      </font>
                   </Label>
                </children>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox alignment="TOP_CENTER" prefHeight="30.0" prefWidth="299.0">
                <children>
-                  <Button fx:id="btnRight" mnemonicParsing="false" onAction="#leftClick" text="&lt;&lt;" />
+                  <Button fx:id="btnLeft" mnemonicParsing="false" onAction="#leftClick" prefHeight="23.0" prefWidth="44.0" text="&lt;&lt;">
+                     <font>
+                        <Font name="Hobo BT" size="12.0" />
+                     </font></Button>
                   <Label fx:id="yearTop" contentDisplay="CENTER" prefHeight="24.0" prefWidth="123.0" style="-fx-alignment: center;" text="Label" />
-                  <Button fx:id="btnLeft" mnemonicParsing="false" onAction="#rightClick" text="&gt;&gt;" />
+                  <Button fx:id="btnRight" mnemonicParsing="false" onAction="#rightClick" prefHeight="23.0" prefWidth="49.0" text="&gt;&gt;" />
                </children>
             </HBox>
-            <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0">
+            <HBox alignment="TOP_RIGHT" prefHeight="30.0" prefWidth="175.0">
                <children>
-                  <Button mnemonicParsing="false" text="Button" />
+                  <Button fx:id="btnList" alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#goList" prefHeight="30.0" prefWidth="42.0" text="list" textFill="#2509e5">
+                     <font>
+                        <Font name="Hobo BT" size="15.0" />
+                     </font>
+                  </Button>
                </children>
             </HBox>
          </children>

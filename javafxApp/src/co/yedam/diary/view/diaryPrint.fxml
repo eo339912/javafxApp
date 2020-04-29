@@ -104,7 +104,7 @@
                   </Label>
                </children>
             </HBox>
-            <Button fx:id="button" alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#diaryListView" prefHeight="29.0" prefWidth="68.0" text="Home" textFill="#e61207">
+            <Button fx:id="button" alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#goHomeView" prefHeight="29.0" prefWidth="68.0" text="Home" textFill="#e61207">
                <font>
                   <Font name="Hobo BT" size="15.0" />
                </font>

@@ -15,7 +15,7 @@ public class Appmain extends Application {
 	@Override
 	public void start(Stage stage) throws Exception {
 		Parent root = FXMLLoader.load(getClass().getResource("calendar.fxml"));
-		Scene scene = new Scene(root, 600, 430);
+		Scene scene = new Scene(root, 300, 300);
 		stage.setTitle("FXML Welcome");
 		stage.setScene(scene);
 		stage.show();

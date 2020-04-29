@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -43,7 +44,9 @@ public class InputContraller implements Initializable {
 	@FXML
 	BorderPane rootLayout;
 	@FXML
-	Button button;
+	Button btnList;
+	@FXML
+	Button btnHome;
 	@FXML
 	HBox hbox;
 
@@ -78,44 +81,67 @@ public class InputContraller implements Initializable {
 			System.out.println("저장처리됨");
 			
 			//수정하고 리스트로 넘어가기
-        	goHome();
+			goList();
 		}
 	}
 
 	@FXML // 취소버튼 click -> 리스트로
 	public void dyDelete(ActionEvent actionEvent) {
-		System.out.println("취소처리됨");
-	}
+		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+		alert.setTitle("취소 메시지");
+		alert.setHeaderText("리스트 화면으로 돌아갑니다.");
+		alert.setContentText("정말 취소하시겠습니까?");
+
+		Optional<ButtonType> result = alert.showAndWait();
+
+		if (result.get() == ButtonType.OK) {
+		goList();
+		
+		}
+	} //E of dyDelete
 
 	@FXML
-	public void diaryListView(ActionEvent event) {
+	public void goList(ActionEvent event) {
+		goList();
+	}
+	
+	
+	public void goHome(ActionEvent event) {
 		try {
-			goHome();
+			Stage stage = new Stage();
+
+			Parent root = FXMLLoader.load(getClass().getResource("./calendar/calendar.fxml"));
+			Scene scene = new Scene(root, 600, 430);
+			stage.setScene(scene);
+			stage.show();
+
+			// 메인 창 닫아주기
+			Stage main = (Stage) rootLayout.getScene().getWindow();
+			main.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
-	//리스트화면으로 가는 매소드
-		public void goHome() {
-			try {
-				BorderPane diaryListView = FXMLLoader.load(getClass().getResource("diaryList.fxml"));
+	//리스트 가는 매소드
+	public void goList() {
+		try {
+			BorderPane diaryListView = FXMLLoader.load(getClass().getResource("diaryList.fxml"));
 
-	          Scene scene = new Scene(diaryListView);
+			Scene scene = new Scene(diaryListView);
 
-	          Stage window = new Stage();
-	          window.setScene(scene);
+			Stage window = new Stage();
+			window.setScene(scene);
 
-	          // make window visible
-	          window.show();
-	          
-	          // 메인 창 닫아주기
-	          Stage main = (Stage) rootLayout.getScene().getWindow();
-	          main.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			
-		} // e of goHome
+			// make window visible
+			window.show();
+          
+			// 메인 창 닫아주기
+			Stage main = (Stage) rootLayout.getScene().getWindow();
+			main.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 }

@@ -29,6 +29,8 @@ public class ListContraller implements Initializable {
 	@FXML
 	Button button;
 	@FXML
+	Button btnHome;
+	@FXML
 	HBox hbox;
 
 	@Override
@@ -91,5 +93,24 @@ public class ListContraller implements Initializable {
 			e.printStackTrace();
 		}
 	}
+	
+	@FXML
+	public void goHomeView(ActionEvent event) {
+		try {
+			Stage stage = new Stage();
+
+			Parent root = FXMLLoader.load(getClass().getResource("./calendar/calendar.fxml"));
+			Scene scene = new Scene(root, 600, 430);
+			stage.setScene(scene);
+			stage.show();
+			
+			// 메인 창 닫아주기
+	          Stage main = (Stage) rootLayout.getScene().getWindow();
+	          main.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 
 }
