@@ -68,7 +68,7 @@ public class GridPaneNode extends GridPane {
 		try {
 			// 새로운 창 띄우기 (새 스테이지 생성 -> 씬 추가 -> 레이아웃 추가)
 			Stage stage = new Stage();
-			Parent root = FXMLLoader.load(getClass().getResource("../../view/diaryPrint.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("/co/yedam/diary/view/diaryPrint.fxml"));
 			Scene sc = new Scene(root);
 			stage.setScene(sc);
 			stage.show();
@@ -86,7 +86,7 @@ public class GridPaneNode extends GridPane {
 		try {
 			// 새로운 창 띄우기 (새 스테이지 생성 -> 씬 추가 -> 레이아웃 추가)
 			Stage stage = new Stage();
-			Parent root = FXMLLoader.load(getClass().getResource("../../view/calendarInput.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("/co/yedam/diary/view/calendarInput.fxml"));
 			Scene sc = new Scene(root);
 			stage.setScene(sc);
 			stage.show();

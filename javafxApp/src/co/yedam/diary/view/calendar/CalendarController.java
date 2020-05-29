@@ -167,7 +167,7 @@ public class CalendarController implements Initializable {
 		try {
 			Stage stage = new Stage();
 
-			Parent root = FXMLLoader.load(getClass().getResource("../../view/diaryList.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("/co/yedam/diary/view/diaryList.fxml"));
 			Scene scene = new Scene(root, 600, 430);
 			stage.setScene(scene);
 			stage.show();

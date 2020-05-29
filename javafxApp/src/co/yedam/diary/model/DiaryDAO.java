@@ -10,7 +10,7 @@ import java.util.List;
 
 public class DiaryDAO {
 
-	String url = "jdbc:oracle:thin:@localhost:1521:xe";
+	String url = "jdbc:oracle:thin:@192.168.0.26:1521:xe";
 	Connection conn = null;
 
 	// 저장 -> 데이터 추가

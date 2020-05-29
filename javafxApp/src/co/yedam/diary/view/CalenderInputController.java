@@ -95,7 +95,7 @@ public class CalenderInputController implements Initializable {
 		try {
 			Stage stage = new Stage();
 
-			Parent root = FXMLLoader.load(getClass().getResource("./calendar/calendar.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("/co/yedam/diary/view/calendar/calendar.fxml"));
 			Scene scene = new Scene(root, 600, 430);
 			stage.setScene(scene);
 			stage.show();
